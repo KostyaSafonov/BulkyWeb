@@ -1,0 +1,47 @@
+@model List<Product>
+
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Product List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Product" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i>
+                Create New Product
+            </a>
+        </div>
+    </div>
+
+    <table style="width: 100%;">
+        <thead>
+        <tr>
+            <th style="width: 33%; padding: 8px; border:1px #ddd solid;">Title</th>
+            <th style="width: 33%; padding: 8px; border:1px #ddd solid;">ISBN</th>
+            <th style="width: 33%; padding: 8px; border:1px #ddd solid;">Price</th>
+            <th style="width: 33%; padding: 8px; border:1px #ddd solid;">Author</th>
+            <th style="width: 33%; padding: 8px; border:1px #ddd solid;">Category</th>
+            <th style="width: 33%; padding: 8px; border:1px #ddd solid;"></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td style="padding: 8px; border:1px #ddd solid;">@obj.Title</td>
+                <td style="padding: 8px; border:1px #ddd solid;">@obj.ISBN</td>
+                <td style="padding: 8px; border:1px #ddd solid;">@obj.ListPrice</td>
+                <td style="padding: 8px; border:1px #ddd solid;">@obj.Author</td>
+                <td style="padding: 8px; border:1px #ddd solid;"></td>
+                <td style="padding: 8px; border:1px #ddd solid;">
+                    <div role="group" style="white-space: nowrap">
+                        <a asp-controller="Product" asp-action="Edit" asp-route-id="@obj.Id">Edit</a>
+                        <a asp-controller="Product" asp-action="Delete" asp-route-id="@obj.Id">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+</div>
